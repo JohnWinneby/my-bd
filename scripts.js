@@ -88,7 +88,7 @@ function listFiles() {
                     const li = document.createElement('li');
                     li.className = 'file-item';
                     li.innerHTML = `
-                        <span>${itemRef.name}</span>
+                        <span class="file-name">${itemRef.name}</span>
                         <div class="actions hidden-on-small">
                             <button onclick="window.open('${url}', '_blank')"><i class="fas fa-download"></i></button>
                             <button onclick="deleteFile('${itemRef.fullPath}')"><i class="fas fa-trash-alt"></i></button>

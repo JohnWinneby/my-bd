@@ -3,23 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Upload</title>
+    <title>John-database</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        input, button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        input[type="email"], input[type="password"], input[type="file"] {
+            width: 100%;
+            max-width: 400px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #authSection, #fileSection {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        #fileList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            background: #fff;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            position: relative;
+        }
+        .file-item .actions {
+            display: flex;
+            align-items: center;
+        }
+        .file-item .actions button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #007bff;
+        }
+        .file-item .actions button:hover {
+            color: #0056b3;
+        }
+        .file-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            z-index: 1000;
+            top: 100%;
+            left: 0;
+            width: max-content;
+        }
+        .file-menu button {
+            display: block;
+            width: 100%;
+            border: none;
+            background: #fff;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            color: #007bff;
+        }
+        .file-menu button:hover {
+            background-color: #f8f9fa;
+        }
+        .hidden-on-small {
+            display: flex;
+        }
+        .hidden-on-large {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .hidden-on-small {
+                display: none;
+            }
+            .hidden-on-large {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Login</h1>
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <button onclick="signup()">Sign Up</button>
+    <div class="container">
+        <h1>John-database</h1>
 
-    <h1>Upload Document</h1>
-    <input type="file" id="file">
-    <button onclick="uploadFile()">Upload</button>
+        <!-- Authentication Section -->
+        <div id="authSection">
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button id="loginBtn">Login</button>
+        </div>
 
-    <h1>Download Document</h1>
-    <input type="text" id="fileName" placeholder="File Name">
-    <button onclick="downloadFile()">Download</button>
+        <!-- File Management Section -->
+        <div id="fileSection" style="display:none;">
+            <h2>Upload Document</h2>
+            <input type="file" id="file">
+            <button id="uploadBtn">Upload</button>
 
-    <script type="module" src="app.js"></script>
+            <h2>Uploaded Files</h2>
+            <ul id="fileList"></ul>
+        </div>
+
+        <!-- Logout Button -->
+        <button id="logoutBtn" style="display:none;">Logout</button>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module" src="scripts.js"></script>
 </body>
 </html>
